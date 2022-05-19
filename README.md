@@ -1,1 +1,1 @@
-# frontend-jjikmeok
+# frontend-practice
