@@ -21,6 +21,7 @@ function onGeoOk(position) {
 function onGeoError() {
   const weather = document.querySelector("#weather span:first-child");
   weather.innerText = "날씨 정보를 확인할 수 없어요";
+  weather.classList.add("warning");
 }
 
 navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);

@@ -15,18 +15,27 @@ function onLoginSubmit(event) {
 }
 
 function paintGreeting(username) {
-  greeting.classList.remove(HIDDEN_CLASSNAME);
-  greeting.innerText = `${username}님 안녕하세요!`;
-
+  const toDoForm = document.getElementById("todo-form");
+  const toDoList = document.getElementById("todo-list");
   const logoutButton = document.createElement("button");
+
+  greeting.classList.remove(HIDDEN_CLASSNAME);
+  toDoForm.classList.remove(HIDDEN_CLASSNAME);
+  toDoList.classList.remove(HIDDEN_CLASSNAME);
+
+  greeting.innerText = `${username}님 안녕하세요!`;
   logoutButton.innerText = "로그아웃";
   logoutButton.addEventListener("click", onLogoutSubmit);
   greeting.appendChild(logoutButton);
 }
 
 function onLogoutSubmit() {
-  localStorage.clear();
+  localStorage.removeItem(USERNAME_KEY);
+  loginInput.value = "";
+
   greeting.classList.add(HIDDEN_CLASSNAME);
+  toDoForm.classList.add(HIDDEN_CLASSNAME);
+  toDoList.classList.add(HIDDEN_CLASSNAME);
   loginForm.classList.remove(HIDDEN_CLASSNAME);
 }
 
