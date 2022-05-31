@@ -11,7 +11,7 @@ function getClock() {
   const seconds = String(dateObj.getSeconds()).padStart(2, "0");
   const day = dayOfWeek[dateObj.getDay()];
 
-  clock.innerText = `${year}년  ${month}월  ${date}일 ${day}요일\n${hours}시 ${minutes}분 ${seconds}초`;
+  clock.innerText = `${year}년  ${month}월  ${date}일 ${day}요일\n${hours}:${minutes}:${seconds}`;
 }
 
 function convTo12Hour(hours) {
