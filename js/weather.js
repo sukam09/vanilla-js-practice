@@ -3,11 +3,24 @@ const API_KEY = "2d77145ed4e2b0de2032f025e4baf96e";
 function onGeoOk(position) {
   const lat = position.coords.latitude;
   const lng = position.coords.longitude;
-  console.log(`현재 위치\n위도: ${lat} 경도: ${lng}`);
+  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${API_KEY}&units=metric`;
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      const weather = document.querySelector("#weather span:first-child");
+      const city = document.querySelector("#weather span:nth-child(2)");
+      const temperature = document.querySelector("#weather span:last-child");
+
+      weather.innerText = data.name;
+      city.innerText = data.weather[0].main;
+      temperature.innerText = `${data.main.temp}℃`;
+    });
 }
 
-function onGeoError(position) {
-  alert("날씨 정보를 확인할 수 없어요.");
+function onGeoError() {
+  const weather = document.querySelector("#weather span:first-child");
+  weather.innerText = "날씨 정보를 확인할 수 없어요";
 }
 
 navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
