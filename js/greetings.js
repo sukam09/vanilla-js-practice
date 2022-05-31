@@ -29,10 +29,13 @@ function paintGreeting(username) {
   greeting.appendChild(logoutButton);
 }
 
-function onLogoutSubmit() {
+function onLogoutSubmit(event) {
+  event.preventDefault();
   localStorage.removeItem(USERNAME_KEY);
   loginInput.value = "";
 
+  // 이미 html에서 js 파일을 모두 실행한 상태이므로 todo.js에 있는 변수들에 접근할 수 있음
+  // global variable이므로 다른 파일에서도 접근할 수 있다!
   greeting.classList.add(HIDDEN_CLASSNAME);
   toDoForm.classList.add(HIDDEN_CLASSNAME);
   toDoList.classList.add(HIDDEN_CLASSNAME);
