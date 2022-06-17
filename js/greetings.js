@@ -5,42 +5,46 @@ const greeting = document.getElementById("greeting");
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
 
-function onLoginSubmit(event) {
+const onLoginSubmit = (event) => {
   event.preventDefault();
   const username = loginInput.value;
 
   localStorage.setItem(USERNAME_KEY, username);
-  loginForm.classList.add(HIDDEN_CLASSNAME);
-  paintGreeting(username);
-}
+  showGreeting(username);
+};
 
-function paintGreeting(username) {
+const showGreeting = (username) => {
   const toDoForm = document.getElementById("todo-form");
   const toDoList = document.getElementById("todo-list");
   const logoutButton = document.createElement("button");
 
+  loginForm.classList.add(HIDDEN_CLASSNAME);
+  weathers.classList.remove(HIDDEN_CLASSNAME);
+  clock.classList.remove(HIDDEN_CLASSNAME);
   greeting.classList.remove(HIDDEN_CLASSNAME);
   toDoForm.classList.remove(HIDDEN_CLASSNAME);
   toDoList.classList.remove(HIDDEN_CLASSNAME);
+  quotes.classList.remove(HIDDEN_CLASSNAME);
 
-  greeting.innerText = `${username}님 안녕하세요!`;
-  logoutButton.innerText = "로그아웃";
+  greeting.innerText = `Good ${partsOfDay}, ${username}.`;
+  logoutButton.innerText = "Logout";
   logoutButton.addEventListener("click", onLogoutSubmit);
   greeting.appendChild(logoutButton);
-}
+};
 
-function onLogoutSubmit(event) {
+const onLogoutSubmit = (event) => {
   event.preventDefault();
   localStorage.removeItem(USERNAME_KEY);
   loginInput.value = "";
 
-  // 이미 html에서 js 파일을 모두 실행한 상태이므로 todo.js에 있는 변수들에 접근할 수 있음
-  // global variable이므로 다른 파일에서도 접근할 수 있다!
+  loginForm.classList.remove(HIDDEN_CLASSNAME);
+  weathers.classList.add(HIDDEN_CLASSNAME);
+  clock.classList.add(HIDDEN_CLASSNAME);
   greeting.classList.add(HIDDEN_CLASSNAME);
   toDoForm.classList.add(HIDDEN_CLASSNAME);
   toDoList.classList.add(HIDDEN_CLASSNAME);
-  loginForm.classList.remove(HIDDEN_CLASSNAME);
-}
+  quotes.classList.add(HIDDEN_CLASSNAME);
+};
 
 const savedUsername = localStorage.getItem(USERNAME_KEY);
 
@@ -48,6 +52,5 @@ if (savedUsername === null) {
   loginForm.classList.remove(HIDDEN_CLASSNAME);
   loginForm.addEventListener("submit", onLoginSubmit);
 } else {
-  // 새로고침해도 로그인 세션을 유지하길 원해서 한번 더 실행
-  paintGreeting(savedUsername);
+  showGreeting(savedUsername);
 }
