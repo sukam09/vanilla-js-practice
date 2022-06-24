@@ -1,6 +1,3 @@
-// 배열을 쓰지 않고 localStorage의 key만 이용해서 저장해볼려 했지만 출력할 때 순서가 바뀌는 문제가 있어서 생각처럼 잘 되지 않음
-// 언젠가 다른 방법을 찾아낼 수 있을까?
-
 const toDoForm = document.getElementById("todo-form");
 const toDoInput = toDoForm.querySelector("input");
 const toDoList = document.getElementById("todo-list");
