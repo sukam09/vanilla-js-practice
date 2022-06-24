@@ -1,5 +1,5 @@
 const API_KEY = config.API_KEY;
-const weathers = document.querySelector("#weathers");
+const weathers = document.querySelector('#weathers');
 
 function onGeoOk(position) {
   const lat = position.coords.latitude;
@@ -9,9 +9,9 @@ function onGeoOk(position) {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      const weather = weathers.querySelector("span:first-child");
-      const city = weathers.querySelector("span:nth-child(2)");
-      const temperature = weathers.querySelector("span:last-child");
+      const weather = weathers.querySelector('span:first-child');
+      const city = weathers.querySelector('span:nth-child(2)');
+      const temperature = weathers.querySelector('span:last-child');
 
       weather.innerText = data.name;
       city.innerText = data.weather[0].main;
@@ -20,7 +20,7 @@ function onGeoOk(position) {
 }
 
 function onGeoError() {
-  const weather = document.querySelector("#weather span:first-child");
+  const weather = document.querySelector('#weather span:first-child');
   weather.innerText = "Can't find you. No weather for you.";
 }
 

@@ -1,9 +1,9 @@
-const loginForm = document.getElementById("login-form");
-const loginInput = document.querySelector("#login-form input");
-const greeting = document.getElementById("greeting");
+const loginForm = document.getElementById('login-form');
+const loginInput = document.querySelector('#login-form input');
+const greeting = document.getElementById('greeting');
 
-const HIDDEN_CLASSNAME = "hidden";
-const USERNAME_KEY = "username";
+const HIDDEN_CLASSNAME = 'hidden';
+const USERNAME_KEY = 'username';
 
 const onLoginSubmit = (event) => {
   event.preventDefault();
@@ -14,9 +14,9 @@ const onLoginSubmit = (event) => {
 };
 
 const showGreeting = (username) => {
-  const toDoForm = document.getElementById("todo-form");
-  const toDoList = document.getElementById("todo-list");
-  const logoutButton = document.createElement("button");
+  const toDoForm = document.getElementById('todo-form');
+  const toDoList = document.getElementById('todo-list');
+  const logoutButton = document.createElement('button');
 
   loginForm.classList.add(HIDDEN_CLASSNAME);
   weathers.classList.remove(HIDDEN_CLASSNAME);
@@ -27,15 +27,15 @@ const showGreeting = (username) => {
   quotes.classList.remove(HIDDEN_CLASSNAME);
 
   greeting.innerText = `Good ${partsOfDay}, ${username}.`;
-  logoutButton.innerText = "Logout";
-  logoutButton.addEventListener("click", onLogoutSubmit);
+  logoutButton.innerText = 'Logout';
+  logoutButton.addEventListener('click', onLogoutSubmit);
   greeting.appendChild(logoutButton);
 };
 
 const onLogoutSubmit = (event) => {
   event.preventDefault();
   localStorage.removeItem(USERNAME_KEY);
-  loginInput.value = "";
+  loginInput.value = '';
 
   loginForm.classList.remove(HIDDEN_CLASSNAME);
   weathers.classList.add(HIDDEN_CLASSNAME);
@@ -50,7 +50,7 @@ const savedUsername = localStorage.getItem(USERNAME_KEY);
 
 if (savedUsername === null) {
   loginForm.classList.remove(HIDDEN_CLASSNAME);
-  loginForm.addEventListener("submit", onLoginSubmit);
+  loginForm.addEventListener('submit', onLoginSubmit);
 } else {
   showGreeting(savedUsername);
 }

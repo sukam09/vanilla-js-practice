@@ -1,19 +1,19 @@
-const toDoForm = document.getElementById("todo-form");
-const toDoInput = toDoForm.querySelector("input");
-const toDoList = document.getElementById("todo-list");
+const toDoForm = document.getElementById('todo-form');
+const toDoInput = toDoForm.querySelector('input');
+const toDoList = document.getElementById('todo-list');
 let toDos = [];
 
-const TODOS_KEY = "todos";
+const TODOS_KEY = 'todos';
 
 function paintToDo(newToDo) {
-  const li = document.createElement("li");
-  const span = document.createElement("span");
-  const button = document.createElement("button");
+  const li = document.createElement('li');
+  const span = document.createElement('span');
+  const button = document.createElement('button');
 
   li.id = newToDo.id;
   span.innerText = newToDo.text;
-  button.innerText = "X";
-  button.addEventListener("click", deleteToDo);
+  button.innerText = 'X';
+  button.addEventListener('click', deleteToDo);
 
   li.appendChild(span);
   li.appendChild(button);
@@ -27,7 +27,7 @@ function saveToDos() {
 function handleToDoSubmit(event) {
   event.preventDefault();
   const newToDo = toDoInput.value;
-  toDoInput.value = "";
+  toDoInput.value = '';
 
   const newToDoObj = {
     id: Date.now(),
@@ -45,7 +45,7 @@ function deleteToDo(event) {
   saveToDos();
 }
 
-toDoForm.addEventListener("submit", handleToDoSubmit);
+toDoForm.addEventListener('submit', handleToDoSubmit);
 
 const savedToDos = localStorage.getItem(TODOS_KEY);
 if (savedToDos !== null) {
