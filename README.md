@@ -1,1 +1,1 @@
-# javascript-for-beginners
+# js-for-beginners
