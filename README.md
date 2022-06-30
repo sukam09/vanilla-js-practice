@@ -1,1 +1,1 @@
-# vanilla-js-for-beginners
+# vanilla-js-practice
